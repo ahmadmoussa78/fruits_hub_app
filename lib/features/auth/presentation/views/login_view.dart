@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_hub/core/widgets/custom_app_bar.dart';
+import 'package:fruits_hub/core/widgets/custom_text_form_field.dart';
 import 'package:fruits_hub/features/auth/presentation/views/login_view_body.dart';
 
 class LoginView extends StatelessWidget {
@@ -10,6 +11,7 @@ class LoginView extends StatelessWidget {
     return Scaffold(
       appBar: buildAppBar(title: "تسجيل دخول"),
       body: const LoginViewBody(),
+    
     );
   }
 }
