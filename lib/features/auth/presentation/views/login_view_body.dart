@@ -4,6 +4,8 @@ import 'package:fruits_hub/core/utils/app_colors.dart';
 import 'package:fruits_hub/core/utils/app_text_styles.dart';
 import 'package:fruits_hub/core/widgets/custom_button.dart';
 import 'package:fruits_hub/core/widgets/custom_text_form_field.dart';
+import 'package:fruits_hub/features/auth/presentation/views/widgets/dont_have_an_account.dart';
+import 'package:fruits_hub/features/auth/presentation/views/widgets/or_divider.dart';
 
 class LoginViewBody extends StatelessWidget {
   const LoginViewBody({super.key});
@@ -41,31 +43,9 @@ class LoginViewBody extends StatelessWidget {
             const SizedBox(height: 16),
             CustomButton(onPressed: () {}, text: ("تسجيل دخول")),
             const SizedBox(height: 33),
-            Text.rich(
-              TextSpan(
-                children: [
-                  TextSpan(
-                    text: 'لا تملك حساب؟',
-                    style: TextStyles.semiBold16.copyWith(
-                      color: const Color(0xFF949D9E),
-                    ),
-                  ),
-                  TextSpan(
-                    text: ' ',
-                    style: TextStyles.semiBold16.copyWith(
-                      color: const Color(0xFF616A6B),
-                    ),
-                  ),
-                  TextSpan(
-                    text: "قم بانشاء حساب",
-                    style: TextStyles.semiBold16.copyWith(
-                      color: AppColors.primaryColor,
-                    ),
-                  ),
-                ],
-              ),
-              textAlign: TextAlign.center,
-            ),
+            const DontHaveAnAccountWidget(),
+            const SizedBox(height: 33),
+            const OrDivider(),
           ],
         ),
       ),
