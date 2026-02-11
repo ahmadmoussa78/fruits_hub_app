@@ -4,7 +4,6 @@ import 'package:fruits_hub/core/widgets/custom_text_form_field.dart';
 class PasswordField extends StatefulWidget {
   const PasswordField({super.key, this.onSaved});
   final void Function(String?)? onSaved;
-
   @override
   State<PasswordField> createState() => _PasswordFieldState();
 }
@@ -15,7 +14,9 @@ class _PasswordFieldState extends State<PasswordField> {
   Widget build(BuildContext context) {
     return CustomTextFormField(
       obscureText: obscuredText,
-      onSaved: (value) {},
+      onSaved: (value) {
+        widget.onSaved!(value);
+      },
       hintText: 'كلمة المرور',
       suffixIcon: GestureDetector(
         onTap: () {
