@@ -1,7 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:fruits_hub/core/Functions/on_genertate_route.dart';
+import 'package:fruits_hub/core/services/bloc_observer_service.dart';
 import 'package:fruits_hub/core/services/get_it_service.dart';
 import 'package:fruits_hub/core/services/shared_prefrences_singelton.dart';
 import 'package:fruits_hub/core/utils/app_colors.dart';
@@ -14,6 +16,7 @@ void main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await Prefs.init();
   setupGetIt();
+  Bloc.observer = BlocObserverService();
   runApp(const FruitHub());
 }
 
