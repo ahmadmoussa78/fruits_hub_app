@@ -55,4 +55,19 @@ class AuthRepoImpl extends AuthRepo {
       return left(ServerFaliure('An error occurred, please try again.'));
     }
   }
+
+  @override
+  Future<Either<Failure, UserEntity>> signInWithGoogle() async {
+    try {
+      var user = await firebaseAuthService.signInWithGoogle();
+      return Right(UserModel.fromFirebaseUser(user));
+    } on CustomExpection catch (e) {
+      return left(ServerFaliure(e.message));
+    } catch (e) {
+      log(
+        'Exception in AuthRepoImpl.createUserWithEmailAndPassword: ${e.toString()}',
+      );
+      return left(ServerFaliure('An error occurred, please try again.'));
+    }
+  }
 }
