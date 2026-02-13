@@ -7,10 +7,10 @@ import 'package:fruits_hub/core/widgets/custom_button.dart';
 import 'package:fruits_hub/core/widgets/custom_text_form_field.dart';
 import 'package:fruits_hub/features/auth/presentation/views/widgets/dont_have_an_account.dart';
 import 'package:fruits_hub/features/auth/presentation/views/widgets/or_divider.dart';
-import 'package:fruits_hub/features/auth/presentation/views/widgets/social_login_button.dart';
+import 'package:fruits_hub/features/auth/presentation/views/widgets/social_signin_button.dart';
 
-class LoginViewBody extends StatelessWidget {
-  const LoginViewBody({super.key});
+class SigninViewBody extends StatelessWidget {
+  const SigninViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -49,19 +49,19 @@ class LoginViewBody extends StatelessWidget {
             const SizedBox(height: 33),
             const OrDivider(),
             const SizedBox(height: 16),
-            SocialLoginButton(
+            SocialSigninButton(
               title: 'تسجيل بواسطة جوجل',
               image: Assets.assetsImagesGoogleIcon,
               onPressed: () {},
             ),
             const SizedBox(height: 16),
-            SocialLoginButton(
+            SocialSigninButton(
               title: 'تسجيل بواسطة أبل',
               image: Assets.assetsImagesApplIcon,
               onPressed: () {},
             ),
             const SizedBox(height: 16),
-            SocialLoginButton(
+            SocialSigninButton(
               title: 'تسجيل بواسطة فيسبوك',
               image: Assets.assetsImagesFacebookIcon,
               onPressed: () {},
