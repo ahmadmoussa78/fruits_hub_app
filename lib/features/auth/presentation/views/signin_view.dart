@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_hub/core/services/get_it_service.dart';
 import 'package:fruits_hub/core/widgets/custom_app_bar.dart';
+import 'package:fruits_hub/core/widgets/custom_progress_hud.dart';
 import 'package:fruits_hub/features/auth/presentation/manager/signin_cubit/signin_cubit.dart';
 import 'package:fruits_hub/features/auth/presentation/views/widgets/signin_view_body.dart';
 import 'package:fruits_hub/features/domain/repos/auth_repo.dart';
@@ -15,8 +16,25 @@ class SigninView extends StatelessWidget {
       create: (context) => SigninCubit(getIt<AuthRepo>()),
       child: Scaffold(
         appBar: buildAppBar(title: "تسجيل دخول"),
-        body: const SigninViewBody(),
+        body: const SigninViewBodyBlocConsumer(),
       ),
+    );
+  }
+}
+
+class SigninViewBodyBlocConsumer extends StatelessWidget {
+  const SigninViewBodyBlocConsumer({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocConsumer<SigninCubit, SigninState>(
+      listener: (context, state) {},
+      builder: (context, state) {
+        return CustomProgessHud(
+          isLoading: state is SigninLoading ? true : false,
+          child: const SigninViewBody(),
+        );
+      },
     );
   }
 }
