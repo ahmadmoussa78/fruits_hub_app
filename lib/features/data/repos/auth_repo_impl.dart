@@ -22,6 +22,7 @@ class AuthRepoImpl extends AuthRepo {
       var user = await firebaseAuthService.createUserWithEmailAndPassword(
         email: email,
         password: password,
+        name: name,
       );
       return Right(UserModel.fromFirebaseUser(user));
     } on CustomExpection catch (e) {
@@ -38,7 +39,6 @@ class AuthRepoImpl extends AuthRepo {
   Future<Either<Failure, UserEntity>> signInWithEmailAndPassword(
     String email,
     String password,
-    String name,
   ) async {
     try {
       var user = await firebaseAuthService.signInWithEmailAndPassword(
