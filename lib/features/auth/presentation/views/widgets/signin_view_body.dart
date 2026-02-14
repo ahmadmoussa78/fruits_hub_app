@@ -98,7 +98,9 @@ class _SigninViewBodyState extends State<SigninViewBody> {
               SocialSigninButton(
                 title: 'تسجيل بواسطة فيسبوك',
                 image: Assets.assetsImagesFacebookIcon,
-                onPressed: () {},
+                onPressed: () {
+                  context.read<SigninCubit>().signInWithFacebook();
+                },
               ),
             ],
           ),
