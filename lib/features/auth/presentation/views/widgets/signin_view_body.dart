@@ -92,7 +92,9 @@ class _SigninViewBodyState extends State<SigninViewBody> {
               SocialSigninButton(
                 title: 'تسجيل بواسطة أبل',
                 image: Assets.assetsImagesApplIcon,
-                onPressed: () {},
+                onPressed: () {
+                  context.read<SigninCubit>().signInWithApple();
+                },
               ),
               const SizedBox(height: 16),
               SocialSigninButton(
