@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_hub/constants.dart';
@@ -89,14 +91,20 @@ class _SigninViewBodyState extends State<SigninViewBody> {
                 },
               ),
               const SizedBox(height: 16),
-              SocialSigninButton(
-                title: 'تسجيل بواسطة أبل',
-                image: Assets.assetsImagesApplIcon,
-                onPressed: () {
-                  context.read<SigninCubit>().signInWithApple();
-                },
-              ),
-              const SizedBox(height: 16),
+
+              Platform.isIOS
+                  ? Column(
+                      children: [
+                        SocialSigninButton(
+                          title: 'تسجيل بواسطة أبل',
+                          image: Assets.assetsImagesApplIcon,
+                          onPressed: () {
+                            context.read<SigninCubit>().signInWithApple();
+                          },
+                        ),
+                      ],
+                    )
+                  : const SizedBox(),
               SocialSigninButton(
                 title: 'تسجيل بواسطة فيسبوك',
                 image: Assets.assetsImagesFacebookIcon,
