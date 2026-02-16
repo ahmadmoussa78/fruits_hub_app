@@ -3,4 +3,13 @@ class UserEntity {
   final String name;
   final String uID;
   UserEntity({required this.email, required this.name, required this.uID});
+
+
+  Map<String, String> toMap(){
+    return {
+      'email': email,
+      'name': name,
+      'uID': uID,
+    };
+  }
 }
