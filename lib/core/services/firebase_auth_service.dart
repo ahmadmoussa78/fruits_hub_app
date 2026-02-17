@@ -136,4 +136,8 @@ class FirebaseAuthService {
       oauthCredential,
     )).user!;
   }
+
+  Future deleteUser() async {
+    await FirebaseAuth.instance.currentUser!.delete();
+  }
 }
