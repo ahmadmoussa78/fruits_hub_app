@@ -7,7 +7,7 @@ import 'package:fruits_hub/core/services/bloc_observer_service.dart';
 import 'package:fruits_hub/core/services/get_it_service.dart';
 import 'package:fruits_hub/core/services/shared_prefrences_singelton.dart';
 import 'package:fruits_hub/core/utils/app_colors.dart';
-import 'package:fruits_hub/features/splash/presentation/views/splash_view.dart';
+import 'package:fruits_hub/features/home/presentation/views/home_view.dart';
 import 'package:fruits_hub/firebase_options.dart';
 import 'package:fruits_hub/generated/l10n.dart';
 
@@ -41,7 +41,7 @@ class FruitHub extends StatelessWidget {
       locale: const Locale('ar'),
       debugShowCheckedModeBanner: false,
       onGenerateRoute: onGenerateRoute,
-      initialRoute: SplashView.routeName,
+      initialRoute: HomeView.routeName,
     );
   }
 }
