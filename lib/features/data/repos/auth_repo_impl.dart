@@ -47,12 +47,6 @@ class AuthRepoImpl extends AuthRepo {
     }
   }
 
-  Future<void> deleteUser(User? user) async {
-    if (user != null) {
-      await firebaseAuthService.deleteUser();
-    }
-  }
-
   @override
   Future<Either<Failure, UserEntity>> signInWithEmailAndPassword(
     String email,
@@ -132,5 +126,11 @@ class AuthRepoImpl extends AuthRepo {
       path: BackendEndPoint.addUserData,
       data: user.toMap(),
     );
+  }
+
+  Future<void> deleteUser(User? user) async {
+    if (user != null) {
+      await firebaseAuthService.deleteUser();
+    }
   }
 }
