@@ -13,7 +13,6 @@ class FirebaseAuthService {
   Future<User> createUserWithEmailAndPassword({
     required String email,
     required String password,
-    required String name,
   }) async {
     try {
       final credential = await FirebaseAuth.instance
@@ -21,24 +20,29 @@ class FirebaseAuthService {
       return credential.user!;
     } on FirebaseAuthException catch (e) {
       log(
-        'Exception in FirebaseAuthService.createUserWithEmailAndPassword: ${e.toString()} and code is  ${e.code}',
+        "Exception in FirebaseAuthService.createUserWithEmailAndPassword: ${e.toString()} and code is ${e.code}",
       );
       if (e.code == 'weak-password') {
-        throw CustomExpection(message: 'The password provided is too weak.');
+        throw CustomExpection(message: 'الرقم السري ضعيف جداً.');
       } else if (e.code == 'email-already-in-use') {
         throw CustomExpection(
-          message: 'The account already exists for that email.',
+          message: 'لقد قمت بالتسجيل مسبقاً. الرجاء تسجيل الدخول.',
         );
       } else if (e.code == 'network-request-failed') {
-        throw CustomExpection(message: 'No internet connection');
+        throw CustomExpection(message: 'تاكد من اتصالك بالانترنت.');
       } else {
-        throw CustomExpection(message: 'An error occurred, please try again.');
+        throw CustomExpection(
+          message: 'لقد حدث خطأ ما. الرجاء المحاولة مرة اخرى.',
+        );
       }
     } catch (e) {
       log(
-        'Exception in FirebaseAuthService.createUserWithEmailAndPassword: ${e.toString()}',
+        "Exception in FirebaseAuthService.createUserWithEmailAndPassword: ${e.toString()}",
       );
-      throw CustomExpection(message: 'An error occurred, please try again.');
+
+      throw CustomExpection(
+        message: 'لقد حدث خطأ ما. الرجاء المحاولة مرة اخرى.',
+      );
     }
   }
 
@@ -54,24 +58,35 @@ class FirebaseAuthService {
       return credential.user!;
     } on FirebaseAuthException catch (e) {
       log(
-        'Exception in FirebaseAuthService.createUserWithEmailAndPassword: ${e.toString()} and code is  ${e.code}',
+        "Exception in FirebaseAuthService.signInWithEmailAndPassword: ${e.toString()} and code is ${e.code}",
       );
       if (e.code == 'user-not-found') {
-        throw CustomExpection(message: 'Email Or Password Is Incorrect.');
+        throw CustomExpection(
+          message: 'الرقم السري او البريد الالكتروني غير صحيح.',
+        );
       } else if (e.code == 'wrong-password') {
         throw CustomExpection(
-          message: 'Wrong password provided for that user.',
+          message: 'الرقم السري او البريد الالكتروني غير صحيح.',
         );
-      } else if (e.code == 'Email Or Password Is Incorrect.') {
-        throw CustomExpection(message: 'No internet connection');
+      } else if (e.code == 'invalid-credential') {
+        throw CustomExpection(
+          message: 'الرقم السري او البريد الالكتروني غير صحيح.',
+        );
+      } else if (e.code == 'network-request-failed') {
+        throw CustomExpection(message: 'تاكد من اتصالك بالانترنت.');
       } else {
-        throw CustomExpection(message: 'An error occurred, please try again.');
+        throw CustomExpection(
+          message: 'لقد حدث خطأ ما. الرجاء المحاولة مرة اخرى.',
+        );
       }
     } catch (e) {
       log(
-        'Exception in FirebaseAuthService.createUserWithEmailAndPassword: ${e.toString()}',
+        "Exception in FirebaseAuthService.signInWithEmailAndPassword: ${e.toString()}",
       );
-      throw CustomExpection(message: 'An error occurred, please try again.');
+
+      throw CustomExpection(
+        message: 'لقد حدث خطأ ما. الرجاء المحاولة مرة اخرى.',
+      );
     }
   }
 
