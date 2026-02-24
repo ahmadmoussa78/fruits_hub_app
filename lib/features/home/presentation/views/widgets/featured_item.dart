@@ -9,7 +9,7 @@ class FeaturedItem extends StatelessWidget {
   const FeaturedItem({super.key});
   @override
   Widget build(BuildContext context) {
-    var itemWidth = MediaQuery.sizeOf(context).width;
+    var itemWidth = MediaQuery.sizeOf(context).width - 32;
     return Padding(
       padding: const EdgeInsets.only(right: 18),
       child: SizedBox(
@@ -30,8 +30,9 @@ class FeaturedItem extends StatelessWidget {
               ),
               Container(
                 width: itemWidth * .5,
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(4),
+                  image: const DecorationImage(
                     image: svg.Svg(Assets.assetsImagesFeaturedItemBackground),
                     fit: BoxFit.fill,
                   ),
